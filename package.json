@@ -15,5 +15,13 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mongoose": "^9.3.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siddharth-31/node-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Siddharth-31/node-api/issues"
+  },
+  "homepage": "https://github.com/Siddharth-31/node-api#readme"
 }
