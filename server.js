@@ -1,29 +1,28 @@
+//import modules
 const express = require('express')
-const bodyParser = require('body-parser')
+const bodyparser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
-
-const url = require('./url')
-
-const app = express()
-
-// middleware
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+//import url
+let url = require('./url')
+//create rest object
+let app = express()
+//set JSON as MIME type
+app.use(bodyparser.json())
+//client is not sending form data -> encoding JSON
+app.use(bodyparser.urlencoded({ extended: false }))
+//enable CORS -> Cross Origine Resource Sharing -> communication among various ports
 app.use(cors())
-
-// MongoDB connection
+//connect to mongodb
 mongoose.connect(url, { dbName: 'nodedb' })
-.then(() => {
-    console.log('✅ MongoDB Connected Successfully')
-})
-.catch((err) => {
-    console.log('❌ MongoDB Connection Error:', err)
-})
-
-// ✅ FIXED PORT
-const port = process.env.PORT || 8080
-
+    .then(() => {
+        console.log('Connection success')
+    }, (errRes) => {
+        console.log('Connection failed :- ', errRes)
+    })
+//create port
+let port = 8080
+//assign port no
 app.listen(port, () => {
-    console.log(`🚀 Server running on port ${port}`)
+    console.log('Server listening port no:- ', port)
 })
